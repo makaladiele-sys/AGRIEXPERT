@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — AgriExperts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">AE</span>
+      <span class="logo-text">AgriExperts</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Catalogue</a>
+      <a href="inscription.html" class="nav-link">Espace expert</a>
+      <a href="recruteur.html" class="nav-link">Espace recruteur</a>
+      <a href="admin.html" class="nav-link is-active">Administration</a>
+    </nav>
+    <a href="#" class="btn btn-ghost">Se connecter</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="form-hero">
+    <div class="wrap">
+      <p class="eyebrow">Espace 4 — Administration</p>
+      <h1>Pilotage de la plateforme</h1>
+      <p class="hero-lead-dark">Validation des profils, mise en relation entre experts et recruteurs, suivi des commissions et gestion des taxonomies.</p>
+    </div>
+  </section>
+
+  <section class="wizard-section">
+    <div class="wrap">
+
+      <!-- ===================== PORTE D'ACCÈS SÉCURISÉE (Supabase Auth) ===================== -->
+      <div id="auth-step-1" class="auth-gate">
+        <div class="auth-card">
+          <h2>Connexion administrateur</h2>
+          <p>Accès réservé aux comptes disposant du rôle administrateur.</p>
+          <form id="auth-form-1">
+            <div class="field">
+              <label for="admin-email">Email *</label>
+              <input type="email" id="admin-email" required>
+            </div>
+            <div class="field">
+              <label for="admin-password">Mot de passe *</label>
+              <input type="password" id="admin-password" required minlength="6">
+            </div>
+            <button class="btn btn-primary" type="submit" style="width:100%; justify-content:center;">Se connecter</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ===================== TABLEAU DE BORD ADMIN ===================== -->
+      <div id="dashboard" hidden>
+
+        <div class="stats-grid" id="stats-grid"></div>
+
+        <nav class="tabs" id="tabs">
+          <button class="tab is-active" data-tab="validations">Validations <span class="tab-count" id="count-validations">0</span></button>
+          <button class="tab" data-tab="comptes">Comptes</button>
+          <button class="tab" data-tab="relations">Mises en relation <span class="tab-count" id="count-relations">0</span></button>
+          <button class="tab" data-tab="commissions">Commissions</button>
+          <button class="tab" data-tab="taxonomies">Taxonomies</button>
+          <button class="tab" data-tab="export">Export</button>
+        </nav>
+
+        <!-- ---------- VALIDATIONS ---------- -->
+        <div class="tab-panel is-active" data-panel="validations">
+          <p class="step-intro">Nouvelles inscriptions d'experts en attente d'examen.</p>
+          <div id="validations-list" class="missions-list"></div>
+          <p class="no-results" id="validations-empty" hidden>Aucune inscription en attente.</p>
+        </div>
+
+        <!-- ---------- COMPTES ---------- -->
+        <div class="tab-panel" data-panel="comptes">
+          <p class="step-intro">Experts validés et recruteurs inscrits.</p>
+          <table class="admin-table" id="comptes-table">
+            <thead>
+              <tr><th>Nom</th><th>Type</th><th>Pays</th><th>Statut</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- ---------- MISES EN RELATION ---------- -->
+        <div class="tab-panel" data-panel="relations">
+          <p class="step-intro">Demandes envoyées par les recruteurs depuis leur short-list. Valider une demande déclenche la commission et communique les coordonnées aux deux parties.</p>
+          <div id="relations-list" class="missions-list"></div>
+        </div>
+
+        <!-- ---------- COMMISSIONS ---------- -->
+        <div class="tab-panel" data-panel="commissions">
+          <div class="commission-summary">
+            <div><span class="stat-value" id="ca-total">0</span><span class="stat-label">FCFA — chiffre d'affaires total</span></div>
+            <div><span class="stat-value" id="ca-du">0</span><span class="stat-label">FCFA — commissions dues</span></div>
+          </div>
+          <table class="admin-table" id="commissions-table">
+            <thead>
+              <tr><th>Mission</th><th>Débiteur</th><th>Montant</th><th>Statut</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- ---------- TAXONOMIES ---------- -->
+        <div class="tab-panel" data-panel="taxonomies">
+          <p class="step-intro">Ajoutez ou retirez des domaines et filières disponibles sur toute la plateforme.</p>
+          <div class="taxo-grid">
+            <div class="taxo-block">
+              <h3>Domaines</h3>
+              <div class="chip-choices" id="taxo-domaines"></div>
+              <div class="taxo-add">
+                <input type="text" id="new-domaine" placeholder="Nouveau domaine…">
+                <button type="button" class="btn btn-outline btn-small" id="add-domaine">Ajouter</button>
+              </div>
+            </div>
+            <div class="taxo-block">
+              <h3>Filières</h3>
+              <div class="chip-choices" id="taxo-filieres"></div>
+              <div class="taxo-add">
+                <input type="text" id="new-filiere" placeholder="Nouvelle filière…">
+                <button type="button" class="btn btn-outline btn-small" id="add-filiere">Ajouter</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------- EXPORT ---------- -->
+        <div class="tab-panel" data-panel="export">
+          <p class="step-intro">Exportez la base d'experts pour un usage hors ligne ou un reporting.</p>
+          <div class="export-buttons">
+            <button type="button" class="btn btn-primary" id="export-csv">Exporter en CSV</button>
+            <button type="button" class="btn btn-outline" id="export-excel">Exporter en Excel</button>
+            <button type="button" class="btn btn-outline" id="export-pdf">Exporter en PDF</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-block">
+      <span class="logo-mark logo-mark--footer">AE</span>
+      <p>AgriExperts est le registre permanent des compétences de la chaîne de valeur agricole, à l'usage des gouvernements, ONG, entreprises et bailleurs de fonds.</p>
+    </div>
+    <div class="footer-block">
+      <h3>Plateforme</h3>
+      <ul>
+        <li><a href="index.html">Catalogue public</a></li>
+        <li><a href="inscription.html">Inscription expert</a></li>
+        <li><a href="recruteur.html">Espace recruteur</a></li>
+      </ul>
+    </div>
+    <div class="footer-block">
+      <h3>Contact</h3>
+      <ul>
+        <li><a href="#">Demander une mise en relation</a></li>
+        <li><a href="#">Nous contacter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-legal">© 2026 AgriExperts — Toute mise en relation passe par l'administration de la plateforme.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription expert — AgriExperts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">AE</span>
+      <span class="logo-text">AgriExperts</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Catalogue</a>
+      <a href="inscription.html" class="nav-link is-active">Espace expert</a>
+      <a href="recruteur.html" class="nav-link">Espace recruteur</a>
+      <a href="admin.html" class="nav-link">Administration</a>
+    </nav>
+    <a href="#" class="btn btn-ghost">Se connecter</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="form-hero">
+    <div class="wrap">
+      <p class="eyebrow">Espace expert — Inscription</p>
+      <h1>Créez votre profil d'expert</h1>
+      <p class="hero-lead-dark">C'est gratuit et ça prend environ 10 minutes. Vous pourrez modifier votre profil à tout moment une fois inscrit.</p>
+    </div>
+  </section>
+
+  <section class="wizard-section">
+    <div class="wrap wizard-wrap">
+
+      <ol class="stepper" id="stepper">
+        <li data-step="1" class="is-active"><span class="step-num">01</span><span class="step-label">Identité</span></li>
+        <li data-step="2"><span class="step-num">02</span><span class="step-label">Expertise</span></li>
+        <li data-step="3"><span class="step-num">03</span><span class="step-label">Disponibilité</span></li>
+        <li data-step="4"><span class="step-num">04</span><span class="step-label">Documents</span></li>
+      </ol>
+
+      <form id="expert-form" novalidate>
+
+        <!-- ===================== ÉTAPE 1 — IDENTITÉ ===================== -->
+        <fieldset class="form-step is-active" data-step="1">
+          <h2>Identité &amp; coordonnées</h2>
+          <p class="step-intro">Vos coordonnées personnelles ne sont jamais affichées publiquement. Seul l'administrateur y a accès.</p>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="field">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" required>
+            </div>
+            <div class="field">
+              <label for="sexe">Sexe *</label>
+              <select id="sexe" name="sexe" required>
+                <option value="">Choisir…</option>
+                <option>Homme</option>
+                <option>Femme</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="naissance">Date de naissance *</label>
+              <input type="date" id="naissance" name="naissance" required>
+            </div>
+            <div class="field">
+              <label for="nationalite">Nationalité *</label>
+              <select id="nationalite" name="nationalite" required></select>
+            </div>
+            <div class="field">
+              <label for="pays-residence">Pays de résidence *</label>
+              <select id="pays-residence" name="pays_residence" required></select>
+            </div>
+            <div class="field">
+              <label for="region-ville">Région / Ville *</label>
+              <input type="text" id="region-ville" name="region_ville" required placeholder="ex. Thiès">
+            </div>
+            <div class="field field-wide">
+              <label for="adresse">Adresse complète</label>
+              <input type="text" id="adresse" name="adresse">
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone *</label>
+              <input type="tel" id="telephone" name="telephone" required placeholder="+221 7X XXX XX XX">
+            </div>
+            <div class="field">
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="+221 7X XXX XX XX">
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="field">
+              <label for="linkedin">LinkedIn</label>
+              <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/…">
+            </div>
+            <div class="field field-wide">
+              <label for="site-web">Site web</label>
+              <input type="url" id="site-web" name="site_web" placeholder="https://…">
+            </div>
+            <div class="field field-wide">
+              <label for="photo">Photo de profil</label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="photo" name="photo" accept="image/*">
+                <button type="button" class="btn btn-file">Choisir un fichier</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <span></span>
+            <button type="button" class="btn btn-primary" data-next>Continuer</button>
+          </div>
+        </fieldset>
+
+        <!-- ===================== ÉTAPE 2 — EXPERTISE ===================== -->
+        <fieldset class="form-step" data-step="2">
+          <h2>Domaines &amp; compétences</h2>
+          <p class="step-intro">Ces informations déterminent dans quelles recherches votre profil apparaîtra.</p>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="domaine-principal">Domaine principal *</label>
+              <select id="domaine-principal" name="domaine_principal" required></select>
+            </div>
+            <div class="field">
+              <label for="fonction">Métier / Fonction *</label>
+              <input type="text" id="fonction" name="fonction" required placeholder="ex. Agronome spécialiste riziculture">
+            </div>
+            <div class="field">
+              <label for="niveau">Niveau d'expertise *</label>
+              <select id="niveau" name="niveau" required></select>
+            </div>
+            <div class="field">
+              <label for="annees-experience">Années d'expérience *</label>
+              <input type="number" id="annees-experience" name="annees_experience" min="0" max="60" required>
+            </div>
+          </div>
+
+          <div class="field field-wide">
+            <label>Domaines secondaires</label>
+            <div class="chip-choices" id="domaines-secondaires"></div>
+          </div>
+
+          <div class="field field-wide">
+            <label>Filière(s) *</label>
+            <div class="chip-choices" id="filieres-choices"></div>
+          </div>
+
+          <div class="field field-wide">
+            <label for="competence-input">Compétences * <span class="field-hint">(tapez puis appuyez sur Entrée)</span></label>
+            <div class="tag-input" id="competences-input">
+              <input type="text" id="competence-input" placeholder="ex. irrigation goutte-à-goutte">
+            </div>
+          </div>
+
+          <div class="field field-wide">
+            <label>Langues *</label>
+            <div id="langues-rows" class="dynamic-rows"></div>
+            <button type="button" class="btn btn-outline btn-small" id="add-langue">+ Ajouter une langue</button>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-outline" data-prev>Retour</button>
+            <button type="button" class="btn btn-primary" data-next>Continuer</button>
+          </div>
+        </fieldset>
+
+        <!-- ===================== ÉTAPE 3 — DISPONIBILITÉ ===================== -->
+        <fieldset class="form-step" data-step="3">
+          <h2>Disponibilité &amp; conditions</h2>
+          <p class="step-intro">Ces critères permettent aux recruteurs de vous trouver au bon moment.</p>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="disponibilite">Statut de disponibilité *</label>
+              <select id="disponibilite" name="disponibilite" required></select>
+            </div>
+            <div class="field">
+              <label for="date-dispo">Date de disponibilité prévisionnelle</label>
+              <input type="date" id="date-dispo" name="date_dispo">
+            </div>
+            <div class="field">
+              <label for="tarif">Tarif journalier</label>
+              <input type="number" id="tarif" name="tarif" min="0" placeholder="ex. 150000">
+            </div>
+            <div class="field">
+              <label for="devise">Devise</label>
+              <select id="devise" name="devise">
+                <option>FCFA</option>
+                <option>EUR</option>
+                <option>USD</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="mobilite">Mobilité</label>
+              <select id="mobilite" name="mobilite">
+                <option>Locale</option>
+                <option>Nationale</option>
+                <option>Régionale</option>
+                <option>Internationale</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field field-wide">
+            <label>Type de contrat souhaité</label>
+            <div class="chip-choices">
+              <label class="chip-choice"><input type="checkbox" name="contrat" value="CDD"><span>CDD</span></label>
+              <label class="chip-choice"><input type="checkbox" name="contrat" value="Consultation ponctuelle"><span>Consultation ponctuelle</span></label>
+              <label class="chip-choice"><input type="checkbox" name="contrat" value="Mission longue"><span>Mission longue</span></label>
+              <label class="chip-choice"><input type="checkbox" name="contrat" value="Télétravail"><span>Télétravail</span></label>
+              <label class="chip-choice"><input type="checkbox" name="contrat" value="Présentiel"><span>Présentiel</span></label>
+            </div>
+          </div>
+
+          <div class="field field-wide">
+            <label>Pays d'intervention souhaités *</label>
+            <div class="chip-choices" id="pays-intervention"></div>
+          </div>
+
+          <div class="field field-wide">
+            <label for="regions-input">Régions d'intervention souhaitées <span class="field-hint">(tapez puis appuyez sur Entrée)</span></label>
+            <div class="tag-input" id="regions-input-wrap">
+              <input type="text" id="regions-input" placeholder="ex. Vallée du fleuve Sénégal">
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-outline" data-prev>Retour</button>
+            <button type="button" class="btn btn-primary" data-next>Continuer</button>
+          </div>
+        </fieldset>
+
+        <!-- ===================== ÉTAPE 4 — DOCUMENTS ===================== -->
+        <fieldset class="form-step" data-step="4">
+          <h2>Documents</h2>
+          <p class="step-intro">Le CV est obligatoire. Les autres documents peuvent être ajoutés plus tard depuis votre profil.</p>
+
+          <div class="field-grid">
+            <div class="field field-wide">
+              <label for="cv">CV *</label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                <button type="button" class="btn btn-file">Choisir un fichier</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+            <div class="field field-wide">
+              <label for="piece-identite">Carte d'identité / passeport <span class="field-hint">(optionnel)</span></label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="piece-identite" name="piece_identite" accept="image/*,.pdf">
+                <button type="button" class="btn btn-file">Choisir un fichier</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+            <div class="field field-wide">
+              <label for="diplomes">Diplômes</label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="diplomes" name="diplomes" accept=".pdf,image/*" multiple>
+                <button type="button" class="btn btn-file">Choisir des fichiers</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+            <div class="field field-wide">
+              <label for="certifications">Certifications</label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="certifications" name="certifications" accept=".pdf,image/*" multiple>
+                <button type="button" class="btn btn-file">Choisir des fichiers</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+            <div class="field field-wide">
+              <label for="attestations">Attestations</label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="attestations" name="attestations" accept=".pdf,image/*" multiple>
+                <button type="button" class="btn btn-file">Choisir des fichiers</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+            <div class="field field-wide">
+              <label for="lettre">Lettre de motivation</label>
+              <div class="file-input" data-file-input>
+                <input type="file" id="lettre" name="lettre" accept=".pdf,.doc,.docx">
+                <button type="button" class="btn btn-file">Choisir un fichier</button>
+                <span class="file-name">Aucun fichier sélectionné</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="portfolio">Lien vers votre portfolio</label>
+              <input type="url" id="portfolio" name="portfolio" placeholder="https://…">
+            </div>
+            <div class="field">
+              <label for="video">Vidéo de présentation <span class="field-hint">(optionnel, lien YouTube/Vimeo)</span></label>
+              <input type="url" id="video" name="video" placeholder="https://…">
+            </div>
+            <div class="field field-wide">
+              <label for="references">Références <span class="field-hint">(personnes pouvant témoigner de votre travail)</span></label>
+              <textarea id="references" name="references" rows="3" placeholder="Nom, fonction, organisation, contact…"></textarea>
+            </div>
+          </div>
+
+          <label class="chip-choice cgu-check">
+            <input type="checkbox" id="cgu" required>
+            <span>J'accepte les conditions d'utilisation et je certifie l'exactitude des informations fournies. *</span>
+          </label>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-outline" data-prev>Retour</button>
+            <button type="submit" class="btn btn-primary">Créer mon profil</button>
+          </div>
+        </fieldset>
+
+      </form>
+
+      <div class="confirmation" id="confirmation" hidden>
+        <div class="confirmation-mark">✓</div>
+        <h2>Votre profil a été soumis</h2>
+        <p>Il sera examiné par l'administrateur avant validation. Vous pourrez ensuite le modifier à tout moment.</p>
+        <p class="confirmation-note">(Démonstration — les données seront enregistrées dans Supabase à l'étape suivante.)</p>
+        <a href="index.html" class="btn btn-primary">Retour au catalogue</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-block">
+      <span class="logo-mark logo-mark--footer">AE</span>
+      <p>AgriExperts est le registre permanent des compétences de la chaîne de valeur agricole, à l'usage des gouvernements, ONG, entreprises et bailleurs de fonds.</p>
+    </div>
+    <div class="footer-block">
+      <h3>Plateforme</h3>
+      <ul>
+        <li><a href="index.html">Catalogue public</a></li>
+        <li><a href="inscription.html">Inscription expert</a></li>
+        <li><a href="recruteur.html">Espace recruteur</a></li>
+      </ul>
+    </div>
+    <div class="footer-block">
+      <h3>Contact</h3>
+      <ul>
+        <li><a href="#">Demander une mise en relation</a></li>
+        <li><a href="#">Nous contacter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-legal">© 2026 AgriExperts — Toute mise en relation passe par l'administration de la plateforme.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/data.js"></script>
+<script src="js/inscription.js"></script>
+</body>
+</html>
