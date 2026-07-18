@@ -7,6 +7,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .visual-caption {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #666;
+  }
+</style>
 </head>
 <body>
 
@@ -39,9 +60,11 @@
           <button type="submit" class="btn btn-primary">Rechercher</button>
         </form>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <svg id="parcel-grid" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg"></svg>
-        <p class="visual-caption">Couverture des compétences enregistrées</p>
+      <div class="hero-visual">
+        <div>
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD..." alt="Expert agricole avec drone" class="hero-image" style="max-width: 500px;">
+          <p class="visual-caption">Expert agricole en action</p>
+        </div>
       </div>
     </div>
   </section>
