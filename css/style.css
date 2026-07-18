@@ -4,9 +4,9 @@
 :root {
   --ink: #1C2318;
   --ink-soft: #3E4A38;
-  --paper: #EEF0E3;
-  --paper-alt: #E3E6D3;
-  --paper-card: #F6F7EF;
+  --paper: #D4E8D0;
+  --paper-alt: #C5DCC0;
+  --paper-card: #E8F3E5;
   --forest: #2F4A2B;
   --forest-deep: #223420;
   --gold: #C68F2E;
@@ -998,360 +998,79 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--forest-deep); margin
 
 .tab-count {
   display: inline-block;
-  background: var(--paper-alt);
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 1px 7px;
-  margin-left: 4px;
-}
-
-.tab-panel { display: none; }
-.tab-panel.is-active { display: block; }
-
-/* ============================================
-   Recherche recruteur
-   ============================================ */
-.search-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.search-row input {
-  flex: 1;
-  min-width: 220px;
-  padding: 11px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  font-family: var(--font-body);
-  font-size: 14.5px;
-}
-
-.search-row select {
-  padding: 11px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  font-family: var(--font-body);
-  font-size: 14px;
-  background: #fff;
-}
-
-.info-banner {
-  margin-top: 22px;
-  padding: 12px 16px;
-  background: var(--paper-alt);
-  border-left: 3px solid var(--gold);
-  border-radius: var(--radius);
-  font-size: 13.5px;
+  background: #F0F2EE;
   color: var(--ink-soft);
-}
-
-.btn-shortlist {
-  padding: 8px 14px;
-  font-size: 13px;
-  background: var(--paper-alt);
-  border: 1px solid var(--forest);
-  color: var(--forest-deep);
-}
-
-.btn-shortlist.is-added {
-  background: var(--forest);
-  color: var(--paper);
-  border-color: var(--forest);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 /* ============================================
-   Badge de correspondance (matching automatique)
+   Modal/Overlay
    ============================================ */
-.match-badge {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 12px;
-  flex-shrink: 0;
-  align-self: flex-start;
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(28, 35, 24, 0.5);
+  z-index: 100;
 }
 
-.match-badge.match-high { background: #E9EFE6; color: var(--forest); border: 1px solid var(--forest); }
-.match-badge.match-mid { background: #FBF3E1; color: var(--gold-deep); border: 1px solid var(--gold-deep); }
-.match-badge.match-low { background: var(--paper-alt); color: var(--ink-soft); border: 1px solid var(--line-strong); }
+.overlay.is-visible { display: block; }
 
-/* ============================================
-   Missions list
-   ============================================ */
-.missions-list { display: flex; flex-direction: column; gap: 14px; }
-
-.mission-card {
-  background: var(--paper-card);
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 18px 20px;
+  padding: 28px;
+  max-width: 520px;
+  width: 90%;
+  z-index: 101;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-head {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 18px;
 }
 
-.mission-card h3 {
-  font-size: 16.5px;
-  margin-bottom: 6px;
-}
+.modal h2 { margin-bottom: 0; }
 
-.mission-meta {
-  font-family: var(--font-mono);
-  font-size: 12px;
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
   color: var(--ink-soft);
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.mission-status {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 10px;
-  background: var(--paper-alt);
-  color: var(--forest-deep);
-  border: 1px solid var(--line-strong);
-  white-space: nowrap;
-}
-
-/* ============================================
-   Short-list
-   ============================================ */
-.shortlist-actions {
-  margin-top: 32px;
-  padding: 22px;
-  background: var(--paper-alt);
-  border-radius: var(--radius);
-  border: 1px solid var(--line-strong);
-}
-
-.shortlist-actions h3 { margin-bottom: 6px; }
-.shortlist-actions .field { margin: 16px 0; max-width: 420px; }
-
-/* ============================================
-   Modale contact admin
-   ============================================ */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(28, 35, 24, 0.55);
+  padding: 0;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  z-index: 1000;
 }
 
-.modal-overlay[hidden] {
-  display: none;
-}
-
-.modal-box {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 32px;
-  max-width: 460px;
-  width: 100%;
-  position: relative;
-}
-
-.modal-box h2 { font-size: 20px; margin-bottom: 8px; }
-.modal-box form { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
-
-.modal-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--ink-soft);
-  line-height: 1;
-}
-
-/* ============================================
-   Administration — stats
-   ============================================ */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-  margin-bottom: 32px;
-}
-
-.stats-grid .stat {
-  background: var(--paper-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-}
-
-/* ============================================
-   Tables admin
-   ============================================ */
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.admin-table th {
-  text-align: left;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--line-strong);
-}
-
-.admin-table td {
-  padding: 12px;
-  border-bottom: 1px solid var(--line);
-  vertical-align: middle;
-}
-
-.admin-table tr:last-child td { border-bottom: none; }
-
-.status-pill {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 10px;
-  border: 1px solid var(--line-strong);
-  background: var(--paper-alt);
-  color: var(--forest-deep);
-  white-space: nowrap;
-}
-
-.status-pill.is-due { border-color: var(--gold-deep); color: var(--gold-deep); background: #FBF3E1; }
-.status-pill.is-paid { border-color: var(--forest); color: var(--forest); background: #E9EFE6; }
-.status-pill.is-pending { border-color: var(--clay); color: var(--clay); background: #F5E9E3; }
-
-.table-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.btn-tiny { padding: 6px 12px; font-size: 12.5px; }
-.btn-danger { background: transparent; border: 1px solid var(--clay); color: var(--clay); }
-.btn-danger:hover { background: #F5E9E3; }
-
-/* ============================================
-   Mises en relation
-   ============================================ */
-.relation-card {
-  background: var(--paper-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  margin-bottom: 14px;
-}
-
-.relation-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-
-.relation-experts {
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  margin-bottom: 12px;
-}
-
-/* ============================================
-   Taxonomies
-   ============================================ */
-.taxo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.taxo-block h3 { font-size: 15px; margin-bottom: 12px; }
-
-.taxo-add { display: flex; gap: 8px; margin-top: 14px; }
-
-.taxo-add input {
-  flex: 1;
-  padding: 9px 11px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  font-family: var(--font-body);
-  font-size: 13.5px;
-}
-
-/* ============================================
-   Commission summary
-   ============================================ */
-.commission-summary {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.commission-summary > div { display: flex; flex-direction: column; gap: 2px; }
-
-.export-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-close:hover { color: var(--ink); }
 
 /* ============================================
    Responsive
    ============================================ */
-@media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; max-width: 320px; margin: 0 auto; }
+@media (max-width: 800px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+  .hero-search { max-width: 100%; }
   .catalogue-inner { grid-template-columns: 1fr; }
   .filters { position: static; }
-  .main-nav { display: none; }
-  .footer-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 20px; }
   .field-grid { grid-template-columns: 1fr; }
-  .dynamic-row { grid-template-columns: 1fr; }
-  .step-label { display: none; }
-  .taxo-grid { grid-template-columns: 1fr; }
-  .admin-table { font-size: 12.5px; }
-  .admin-table th, .admin-table td { padding: 8px; }
-}
-
-/* ============================================
-   Barre de progression d'envoi des documents
-   ============================================ */
-.upload-progress {
-  margin-top: 20px;
-  padding: 16px 18px;
-  background: var(--paper-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-.upload-progress-bar {
-  width: 100%;
-  height: 8px;
-  background: var(--paper-alt);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.upload-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--forest);
-  transition: width 0.3s ease;
-}
-
-.upload-progress-text {
-  margin: 10px 0 0;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  color: var(--ink-soft);
 }
