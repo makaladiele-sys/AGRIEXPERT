@@ -12,13 +12,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 20px 0;
   }
   
   .hero-image {
     max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
+    display: block;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
   .visual-caption {
@@ -54,7 +60,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Répertoire national &amp; international</p>
         <h1>Toute l'expertise de la chaîne de valeur agricole, cartographiée en un seul registre.</h1>
-        <p class="hero-lead">De l'idée du projet à sa clôture : agronomes, vétérinaires, spécialistes filières, experts en financement et en agro-industrie — trouvez le bon profil, où qu'il soit.</p>
+        <p class="hero-lead">De l'idée du projet à sa clôture : agronomes, vétérinaires, spécialistes filières, experts en financement et en agro-industrie — trouvez le bon profil, où qu'il se trouve.</p>
         <form class="hero-search" id="hero-search-form">
           <input type="text" id="quick-search" placeholder="Rechercher un métier, une compétence, un pays…" autocomplete="off">
           <button type="submit" class="btn btn-primary">Rechercher</button>
@@ -62,7 +68,7 @@
       </div>
       <div class="hero-visual">
         <div>
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD..." alt="Expert agricole avec drone" class="hero-image" style="max-width: 500px;">
+          <img src="images/expert-drone.jpg" alt="Expert agricole avec drone" class="hero-image">
           <p class="visual-caption">Expert agricole en action</p>
         </div>
       </div>
